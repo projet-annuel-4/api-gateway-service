@@ -46,16 +46,6 @@ spring:
             - RewritePath=/auth/(?<path>.*), /$\{path}
             - RemoveRequestHeader= Cookie,Set-Cookie
 
-logging:
-  level:
-    com.netflix: WARN
-    org.springframework.web: WARN
-    com.esgi: DEBUG
-
-
-jwt:
-  secret: ${JWT_SECRET}
-
 management:
   endpoints:
     web:
