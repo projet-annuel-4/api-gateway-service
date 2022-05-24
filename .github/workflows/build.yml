@@ -121,7 +121,7 @@ jobs:
         - name: Build and push - gateway service
           uses: docker/build-push-action@v2
           with:
-            context: ./gateway-service
+            context: ./
             file: ./Dockerfile
             platforms: linux/amd64
             push: true
