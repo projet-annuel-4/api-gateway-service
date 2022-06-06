@@ -43,6 +43,14 @@ spring:
             - RewritePath=/auth/(?<path>.*), /$\{path}
             - RemoveRequestHeader= Cookie,Set-Cookie
 
+        - id: remote-code-execution-client-service
+          uri: lb://remote-code-execution-client-service
+          predicates:
+            - Path=/codeExecutor/**
+          filters:
+            - RewritePath=/codeExecutor/(?<path>.*), /$\{path}
+            - RemoveRequestHeader= Cookie,Set-Cookie
+
 management:
   endpoints:
     web:
