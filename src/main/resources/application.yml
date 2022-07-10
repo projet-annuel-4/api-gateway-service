@@ -1,3 +1,4 @@
+hostname: localhost:4200
 eureka:
   instance:
     prefer-ip-address: true
@@ -30,17 +31,17 @@ spring:
         - id: chat-service
           uri: lb://chat-service
           predicates:
-            - Path=/chat/**
+            - Path=/api/v1/chat/**
           filters:
-            - RewritePath=/chat/(?<path>.*), /$\{path}
+            - RewritePath=/api/v1/chat/(?<path>.*), /$\{path}
             - RemoveRequestHeader= Cookie,Set-Cookie
 
         - id: auth-service
           uri: lb://auth-service
           predicates:
-            - Path=/auth/**
+            - Path=/api/v1/auth/**
           filters:
-            - RewritePath=/auth/(?<path>.*), /$\{path}
+            - RewritePath=/api/v1/auth/(?<path>.*), /$\{path}
             - RemoveRequestHeader= Cookie,Set-Cookie
 
         - id: remote-code-execution-client-service
