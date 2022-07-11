@@ -27,7 +27,7 @@ jobs:
         - name: Bump jar version
           id: bump
           run: |
-              OLD_VERSION=$(cd $POMPATH && mvn org.apache.maven.plugins:maven-help-plugin:2.1.1:evaluate -Dexpression=project.version)
+              OLD_VERSION=$(cd $POMPATH && mvn help:evaluate -Dexpression=project.version -q -DforceStdout)
               echo "$OLD_VERSION"
               echo ::set-output ${OLD_VERSION}
               BUMP_MODE="none"
