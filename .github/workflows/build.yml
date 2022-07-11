@@ -28,6 +28,7 @@ jobs:
           id: bump
           run: |
               OLD_VERSION=$(cd $POMPATH && mvn help:evaluate -Dexpression=project.version -q -DforceStdout)
+              echo "$OLD_VERSION"
               BUMP_MODE="none"
               old="$OLD_VERSION"
               parts=( ${old//./ } )
