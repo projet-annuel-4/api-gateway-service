@@ -9,7 +9,7 @@ LABEL maintainer="HLimam <heithem.limame@gmail.com>"
 #ARG JAR_FILE
 
 # Add the application's jar to the container
-COPY *.jar app.jar
+COPY target/*.jar app.jar
 
 #unpackage jar file
 RUN mkdir -p target/dependency && (cd target/dependency; jar -xf /app.jar)
