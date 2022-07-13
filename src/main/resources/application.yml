@@ -51,6 +51,14 @@ spring:
             - RewritePath=/codeExecutor/(?<path>.*), /$\{path}
             - RemoveRequestHeader= Cookie,Set-Cookie
 
+        - id: post-service
+          uri: lb://post-service
+          predicates:
+            - Path=/post/**
+          filters:
+            - RewritePath=/post/(?<path>.*), /$\{path}
+            - RemoveRequestHeader= Cookie,Set-Cookie
+
 management:
   endpoints:
     web:
