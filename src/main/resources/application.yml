@@ -61,36 +61,36 @@ spring:
             - RemoveRequestHeader= Cookie,Set-Cookie
 
         - id: files-management-service
-            uri: lb://files-management-service
-            predicates:
-              - Path=/files-management/**
-            filters:
-              - RewritePath=/files-management/(?<path>.*), /$\{path}
-              - RemoveRequestHeader= Cookie,Set-Cookie
+          uri: lb://files-management-service
+          predicates:
+            - Path=/files-management/**
+          filters:
+            - RewritePath=/files-management/(?<path>.*), /$\{path}
+            - RemoveRequestHeader= Cookie,Set-Cookie
 
         - id: users-group-service
-            uri: lb://users-group-service
-            predicates:
-              - Path=/users-group/**
-            filters:
-              - RewritePath=/users-group/(?<path>.*), /$\{path}
-              - RemoveRequestHeader= Cookie,Set-Cookie
+          uri: lb://users-group-service
+          predicates:
+            - Path=/users-group/**
+          filters:
+            - RewritePath=/users-group/(?<path>.*), /$\{path}
+            - RemoveRequestHeader= Cookie,Set-Cookie
 
         - id: post-service
-            uri: lb://post-service
-            predicates:
-              - Path=/post/**
-            filters:
-              - RewritePath=/post/(?<path>.*), /$\{path}
-              - RemoveRequestHeader= Cookie,Set-Cookie
+          uri: lb://post-service
+          predicates:
+            - Path=/post/**
+          filters:
+            - RewritePath=/post/(?<path>.*), /$\{path}
+            - RemoveRequestHeader= Cookie,Set-Cookie
 
         - id: project-service
-            uri: lb://project-service
-            predicates:
-              - Path=/project/**
-            filters:
-              - RewritePath=/project/(?<path>.*), /$\{path}
-              - RemoveRequestHeader= Cookie,Set-Cookie
+          uri: lb://project-service
+          predicates:
+            - Path=/project/**
+          filters:
+            - RewritePath=/project/(?<path>.*), /$\{path}
+            - RemoveRequestHeader= Cookie,Set-Cookie
 management:
   endpoints:
     web:
