@@ -91,7 +91,6 @@ spring:
             filters:
               - RewritePath=/project/(?<path>.*), /$\{path}
               - RemoveRequestHeader= Cookie,Set-Cookie
-
 management:
   endpoints:
     web:
