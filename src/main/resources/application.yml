@@ -1,15 +1,96 @@
+hostname: localhost:8080
+eureka:
+  instance:
+    prefer-ip-address: true
+  client:
+    registerWithEureka: false
+    serviceUrl:
+      defaultZone: ${DISCOVERY_URL:http://discovery:8761}/eureka
+
+spring:
+  application:
+    name: gateway-service
+  config:
+    import: optional:configserver:config-server
+  cloud:
+    config:
+      discovery:
+        enabled: true
+        service-id: config-server
+    loadbalancer:
+      ribbon:
+        enabled: false
+    gateway:
+      discovery:
+        locator:
+          enabled: true
+          lower-case-service-id: true
+      routes:
+        - id: chat-service
+          uri: lb://chat-service
+          predicates:
+            - Path=/api/v1/chat/**
+          filters:
+            - RewritePath=/api/v1/chat/(?<path>.*), /$\{path}
+            - RemoveRequestHeader= Cookie,Set-Cookie
+
+        - id: auth-service
+          uri: lb://auth-service
+          predicates:
+            - Path=/api/v1/auth/**
+          filters:
+            - RewritePath=/api/v1/auth/(?<path>.*), /$\{path}
+            - RemoveRequestHeader= Cookie,Set-Cookie
+
+        - id: remote-code-execution-client-service
+          uri: lb://remote-code-execution-client-service
+          predicates:
+            - Path=/codeExecutor/**
+          filters:
+            - RewritePath=/codeExecutor/(?<path>.*), /$\{path}
+            - RemoveRequestHeader= Cookie,Set-Cookie
+
+        - id: remote-code-execution-server-service
+          uri: lb://remote-code-execution-server-service
+          predicates:
+            - Path=/codeExecutor/**
+          filters:
+            - RewritePath=/codeExecutor/(?<path>.*), /$\{path}
+            - RemoveRequestHeader= Cookie,Set-Cookie
+
+        - id: files-management-service
+            uri: lb://files-management-service
+            predicates:
+              - Path=/files-management/**
+            filters:
+              - RewritePath=/files-management/(?<path>.*), /$\{path}
+              - RemoveRequestHeader= Cookie,Set-Cookie
+
+        - id: users-group-service
+            uri: lb://users-group-service
+            predicates:
+              - Path=/users-group/**
+            filters:
+              - RewritePath=/users-group/(?<path>.*), /$\{path}
+              - RemoveRequestHeader= Cookie,Set-Cookie
+
+        - id: post-service
+            uri: lb://post-service
+            predicates:
+              - Path=/post/**
+            filters:
+              - RewritePath=/post/(?<path>.*), /$\{path}
+              - RemoveRequestHeader= Cookie,Set-Cookie
+
+        - id: project-service
+            uri: lb://project-service
+            predicates:
+              - Path=/project/**
+            filters:
+              - RewritePath=/project/(?<path>.*), /$\{path}
+              - RemoveRequestHeader= Cookie,Set-Cookie
 management:
   endpoints:
     web:
       exposure:
-        include: info,refresh,keepalive,health
-spring:
-  application:
-    name: gateway-service
-
-logging:
-  level:
-   org:
-    springframework:
-     cloud:
-      kubernetes: DEBUG
+        include: '*'
