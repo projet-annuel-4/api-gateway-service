@@ -34,7 +34,7 @@ spring:
           predicates:
             - Path=/api/v1/auth/**
           filters:
-            - RewritePath=/api/v1/auth/(?<path>.*), /$\{path}
+  #          - RewritePath=/api/v1/auth/(?<path>.*), /$\{path}
             - RemoveRequestHeader= Cookie,Set-Cookie
 
         - id: remote-code-execution-client-service
@@ -140,5 +140,5 @@ ribbon:
 
 jwt:
   header: Authorization
-  secret: ${JWT_SECRET}
+  secret: ${JWT_SECRET:BvPHGM8C0ia4uOuxxqPD5DTbWC9F9TWvPStp3pb7ARo0oK2mJ3pd3YG4lxA9i8bj6OTbadwezxgeEByY}
   expiration: 86400
