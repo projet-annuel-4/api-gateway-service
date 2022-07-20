@@ -26,7 +26,6 @@ spring:
           predicates:
             - Path=/api/v1/chat/**
           filters:
-  #          - RewritePath=/api/v1/chat/(?<path>.*), /$\{path}
             - RemoveRequestHeader= Cookie,Set-Cookie
 
         - id: auth-service
@@ -34,7 +33,6 @@ spring:
           predicates:
             - Path=/api/v1/auth/**
           filters:
-  #          - RewritePath=/api/v1/auth/(?<path>.*), /$\{path}
             - RemoveRequestHeader= Cookie,Set-Cookie
 
         - id: remote-code-execution-client-service
@@ -42,7 +40,6 @@ spring:
           predicates:
             - Path=/codeExecutor/**
           filters:
-            - RewritePath=/codeExecutor/(?<path>.*), /$\{path}
             - RemoveRequestHeader= Cookie,Set-Cookie
 
         - id: remote-code-execution-server-service
@@ -50,7 +47,6 @@ spring:
           predicates:
             - Path=/codeExecutor/**
           filters:
-            - RewritePath=/codeExecutor/(?<path>.*), /$\{path}
             - RemoveRequestHeader= Cookie,Set-Cookie
 
         - id: files-management-service
@@ -58,7 +54,6 @@ spring:
           predicates:
             - Path=/files-management/**
           filters:
-            - RewritePath=/files-management/(?<path>.*), /$\{path}
             - RemoveRequestHeader= Cookie,Set-Cookie
 
         - id: users-group-service
@@ -66,7 +61,6 @@ spring:
           predicates:
             - Path=/users-group/**
           filters:
-            - RewritePath=/users-group/(?<path>.*), /$\{path}
             - RemoveRequestHeader= Cookie,Set-Cookie
 
         - id: post-service
@@ -74,7 +68,6 @@ spring:
           predicates:
             - Path=/post/**
           filters:
-            - RewritePath=/post/(?<path>.*), /$\{path}
             - RemoveRequestHeader= Cookie,Set-Cookie
 
         - id: project-service
@@ -82,7 +75,6 @@ spring:
           predicates:
             - Path=/project/**
           filters:
-            - RewritePath=/project/(?<path>.*), /$\{path}
             - RemoveRequestHeader= Cookie,Set-Cookie
 
   # Disable accessing services using service name (i.e. students-service).
