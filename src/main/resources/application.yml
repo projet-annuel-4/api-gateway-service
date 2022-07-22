@@ -38,42 +38,42 @@ spring:
         - id: remote-code-execution-client-service
           uri: lb://remote-code-execution-client-service
           predicates:
-            - Path=/codeExecutor/**
+            - Path=/api/v1/codeExecutor/**
           filters:
             - RemoveRequestHeader= Cookie,Set-Cookie
 
         - id: remote-code-execution-server-service
           uri: lb://remote-code-execution-server-service
           predicates:
-            - Path=/codeExecutor/**
+            - Path=/api/v1/codeExecutor/**
           filters:
             - RemoveRequestHeader= Cookie,Set-Cookie
 
         - id: files-management-service
           uri: lb://files-management-service
           predicates:
-            - Path=/files-management/**
+            - Path=/api/v1/files/**
           filters:
             - RemoveRequestHeader= Cookie,Set-Cookie
 
         - id: users-group-service
           uri: lb://users-group-service
           predicates:
-            - Path=/users-group/**
+            - Path=/api/v1/groups/**
           filters:
             - RemoveRequestHeader= Cookie,Set-Cookie
 
         - id: post-service
           uri: lb://post-service
           predicates:
-            - Path=/post/**
+            - Path=/api/v1/post/**
           filters:
             - RemoveRequestHeader= Cookie,Set-Cookie
 
         - id: project-service
           uri: lb://project-service
           predicates:
-            - Path=/project/**
+            - Path=/api/v1/project/**
           filters:
             - RemoveRequestHeader= Cookie,Set-Cookie
 
