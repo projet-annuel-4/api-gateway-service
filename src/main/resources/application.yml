@@ -38,14 +38,14 @@ spring:
         - id: remote-code-execution-client-service
           uri: lb://remote-code-execution-client-service
           predicates:
-            - Path=/api/v1/codeExecutor/**
+            - Path=/api/v1/executor/**
           filters:
             - RemoveRequestHeader= Cookie,Set-Cookie
 
         - id: remote-code-execution-server-service
           uri: lb://remote-code-execution-server-service
           predicates:
-            - Path=/api/v1/codeExecutor/**
+            - Path=/api/v1/executor/**
           filters:
             - RemoveRequestHeader= Cookie,Set-Cookie
 
