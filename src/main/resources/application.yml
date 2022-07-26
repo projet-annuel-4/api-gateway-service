@@ -24,64 +24,57 @@ spring:
         - id: chat-service
           uri: lb://chat-service
           predicates:
-            - Path=/backend/api/v1/chat/**
+            - Path=/api/v1/chat/**
           filters:
             - RemoveRequestHeader= Cookie,Set-Cookie
 
         - id: auth-service
           uri: lb://auth-service
           predicates:
-            - Path=/backend/api/v1/auth/**
+            - Path=/api/v1/auth/**
           filters:
-            - RewritePath=/backend/(?<path>.*), /$\{path}
             - RemoveRequestHeader= Cookie,Set-Cookie
 
         - id: remote-code-execution-client-service
           uri: lb://remote-code-execution-client-service
           predicates:
-            - Path=/backend/api/v1/executor/**
+            - Path=/api/v1/executor/**
           filters:
-            - RewritePath=/backend/(?<path>.*), /$\{path}
             - RemoveRequestHeader= Cookie,Set-Cookie
 
         - id: remote-code-execution-server-service
           uri: lb://remote-code-execution-server-service
           predicates:
-            - Path=/backend/api/v1/executor/**
+            - Path=/api/v1/executor/**
           filters:
-            - RewritePath=/backend/(?<path>.*), /$\{path}
             - RemoveRequestHeader= Cookie,Set-Cookie
 
         - id: files-management-service
           uri: lb://files-management-service
           predicates:
-            - Path=/backend/api/v1/files/**
+            - Path=/api/v1/files/**
           filters:
-            - RewritePath=/backend/(?<path>.*), /$\{path}
             - RemoveRequestHeader= Cookie,Set-Cookie
 
         - id: users-group-service
           uri: lb://users-group-service
           predicates:
-            - Path=/backend/api/v1/groups/**
+            - Path=/api/v1/groups/**
           filters:
-            - RewritePath=/backend/(?<path>.*), /$\{path}
             - RemoveRequestHeader= Cookie,Set-Cookie
 
         - id: post-service
           uri: lb://post-service
           predicates:
-            - Path=/backend/api/v1/post/**
+            - Path=/api/v1/post/**
           filters:
-            - RewritePath=/backend/(?<path>.*), /$\{path}
             - RemoveRequestHeader= Cookie,Set-Cookie
 
         - id: project-service
           uri: lb://project-service
           predicates:
-            - Path=/backend/api/v1/project/**
+            - Path=/api/v1/project/**
           filters:
-            - RewritePath=/backend/(?<path>.*), /$\{path}
             - RemoveRequestHeader= Cookie,Set-Cookie
 
   # Disable accessing services using service name (i.e. students-service).
