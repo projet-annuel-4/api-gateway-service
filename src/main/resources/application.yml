@@ -45,7 +45,7 @@ spring:
         - id: remote-code-execution-server-service
           uri: lb://remote-code-execution-server-service
           predicates:
-            - Path=/api/v1/executor/**
+            - Path=/api/v1/codeExecutor/**
           filters:
             - RemoveRequestHeader= Cookie,Set-Cookie
 
@@ -103,7 +103,7 @@ zuul:
       strip-prefix: false
     # Map path to code execution client service
     remote-code-execution-client-service:
-      path: /api/v1/codeExecutor/**
+      path: /api/v1/executor/**
       service-id: REMOTE-CODE-EXECUTION-CLIENT-SERVICE
       strip-prefix: false
     # Map path to code execution files management service
