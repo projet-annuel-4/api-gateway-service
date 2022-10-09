@@ -70,8 +70,8 @@ spring:
           filters:
             - RemoveRequestHeader= Cookie,Set-Cookie
 
-        - id: project-service
-          uri: lb://project-service
+        - id: versioning-service
+          uri: lb://versioning-service
           predicates:
             - Path=/api/v1/project/**
           filters:
@@ -122,9 +122,9 @@ zuul:
       service-id: POST-SERVICE
       strip-prefix: false
     # Map path to code execution user group service
-    project-service:
+    versioning-service:
       path: /api/v1/project/**
-      service-id: PROJECT-SERVICE
+      service-id: VERSIONING-SERVICE
       strip-prefix: false
 
 ribbon:
